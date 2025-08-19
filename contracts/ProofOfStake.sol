@@ -4,8 +4,9 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 
 contract ProofOfStake {
+
     IERC721 public nftContract;
-    mapping(address => uint256) public validatorBalances;
+    mapping(address => uint256) public validatorBalances; // validator address => network fee balance
 
     constructor(IERC721 _nftContract) {
         nftContract = _nftContract;
