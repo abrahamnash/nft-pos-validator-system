@@ -5,6 +5,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "./NFTMinting.sol";
 
 contract DAO is Ownable {
+
     NFTMinting public nftMintingContract;
 
     constructor(NFTMinting _nftMintingContract) {
@@ -20,6 +21,6 @@ contract DAO is Ownable {
     }
 
     function updateSlashingParameters(uint256 slashingRate, uint256 minSlashingAmount) external onlyOwner {
-        // Governance-controlled parameters
+        // Update slashing parameters in related contracts
     }
 }
