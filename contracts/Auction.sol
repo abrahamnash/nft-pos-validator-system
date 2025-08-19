@@ -2,36 +2,56 @@
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract Auction is Ownable {
-
+contract Auction {
     IERC721 public nftContract;
-    mapping(uint256 => uint256) public nftBids; // tokenId => highest bid
-    mapping(uint256 => address) public nftHighestBidder; // tokenId => highest bidder
 
-    uint256 public auctionDuration = 14 days; // Bi-monthly auction duration
+    // Mapping to track the auction state of NFTs
+    mapping(uint256 => uint256) public auctionEndTime;
+    mapping(uint256 => uint256) public highestBid;
+    mapping(uint256 => address) public highestBidder;
 
-    constructor(IERC721 _nftContract) {
-        nftContract = _nftContract;
+    constructor(address nftAddress) {
+        nftContract = IERC721(nftAddress);
     }
 
-    function startAuction(uint256 tokenId, uint256 startingPrice) external onlyOwner {
-        require(nftContract.ownerOf(tokenId) == msg.sender, "Only owner can start auction");
-        nftBids[tokenId] = startingPrice;
+    // Start an auction with a given tokenId and starting price
+    function startAuction(uint256 tokenId, uint256 startingPrice) public {
+        auctionEndTime[tokenId] = block.timestamp + 3 days;  // 3 days auction time
+        highestBid[tokenId] = startingPrice;
     }
 
-    function bidOnNFT(uint256 tokenId) external payable {
-        require(msg.value > nftBids[tokenId], "Bid too low");
-        nftBids[tokenId] = msg.value;
-        nftHighestBidder[tokenId] = msg.sender;
+    // Place a bid for an NFT
+    function bid(uint256 tokenId) public payable {
+        require(block.timestamp < auctionEndTime[tokenId], "Auction ended");
+        require(msg.value > highestBid[tokenId], "Bid too low");
+
+        address previousBidder = highestBidder[tokenId];
+        uint256 previousBid = highestBid[tokenId];
+
+        highestBidder[tokenId] = msg.sender;
+        highestBid[tokenId] = msg.value;
+
+        if (previousBidder != address(0)) {
+            payable(previousBidder).transfer(previousBid);
+        }
     }
 
-    function endAuction(uint256 tokenId) external {
-        address winner = nftHighestBidder[tokenId];
-        require(winner != address(0), "No bids placed");
+    // End an auction and transfer NFT to the highest bidder
+    function endAuction(uint256 tokenId) public {
+        require(block.timestamp >= auctionEndTime[tokenId], "Auction not yet ended");
 
-        nftContract.safeTransferFrom(msg.sender, winner, tokenId);
-        payable(msg.sender).transfer(nftBids[tokenId]);
+        address winner = highestBidder[tokenId];
+
+        // Use slashed value when auctioning a slashed NFT
+        uint256 effectiveValue = nftContract.getEffectiveValue(tokenId);
+
+        // If highest bid is higher than effective value, transfer NFT to the winner
+        require(highestBid[tokenId] >= effectiveValue, "Bid does not meet reserve price");
+
+        nftContract.transferFrom(msg.sender, winner, tokenId);
+
+        // Reset the slashed value after the auction is complete
+        nftContract.resetSlashedValue(tokenId);
     }
 }
