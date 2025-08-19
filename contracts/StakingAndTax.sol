@@ -5,11 +5,12 @@ import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract StakingAndTax is Ownable {
-    IERC721 public nftContract;
-    mapping(uint256 => uint256) public nftValues;
-    mapping(uint256 => uint256) public harbergerTaxes;
 
-    uint256 public taxRate = 10; // Harberger tax rate, adjustable by DAO
+    IERC721 public nftContract;
+    mapping(uint256 => uint256) public nftValues; // tokenId => self-assessed value
+    mapping(uint256 => uint256) public harbergerTaxes; // tokenId => Harberger tax
+
+    uint256 public taxRate = 10; // 10% Harberger tax rate, adjustable by DAO
 
     constructor(IERC721 _nftContract) {
         nftContract = _nftContract;
@@ -24,7 +25,7 @@ contract StakingAndTax is Ownable {
         return nftValues[tokenId];
     }
 
-    function calculateHarbergerTax(uint256 tokenId) public view returns (uint256) {
+    function calculateHarbergerTax(uint256 tokenId) external view returns (uint256) {
         uint256 value = nftValues[tokenId];
         return (value * taxRate) / 100;
     }
