@@ -1,6 +1,6 @@
 # NFT Proof of Stake Validator System
 
-A decentralized Ethereum-based Proof of Stake system where validators stake NFTs, earn network fees, pay Harberger taxes, and face slashing for misconduct. This approach reduces token speculation, aligning incentives with honest participation and sustainable blockchain ecosystem growth.
+A decentralized Ethereum-based Proof of Stake system where validators stake NFTs, earn network fees, pay Harberger taxes, and face slashing for misconduct. This approach reduces token speculation, aligning incentives with honest participation and sustainable blockchain ecosystem growth. Inspired by **RadicalXChange** and the concept of **partial common ownership**, this system ensures validators are economically incentivized to contribute fairly to the network.
 
 ## Components
 - **NFTMinting.sol**: ERC-721 contract for minting validator NFTs.
