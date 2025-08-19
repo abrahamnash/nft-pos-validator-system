@@ -1,6 +1,10 @@
+node_modules/
+
 # Remix compiler artifacts
 **/artifacts/
 **/artifacts/**
+
+cache/
 
 # Remix plugin state folders
 deps/
@@ -13,3 +17,4 @@ states/
 # Optional
 .env
 .env.local
+
