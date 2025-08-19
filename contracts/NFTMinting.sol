@@ -5,6 +5,7 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract NFTMinting is ERC721Enumerable, Ownable {
+
     uint256 public nextTokenId;
     uint256 public maxSupply;
 
