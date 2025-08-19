@@ -5,11 +5,12 @@ import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract Auction is Ownable {
-    IERC721 public nftContract;
-    mapping(uint256 => uint256) public nftBids;
-    mapping(uint256 => address) public nftHighestBidder;
 
-    uint256 public auctionDuration = 14 days;
+    IERC721 public nftContract;
+    mapping(uint256 => uint256) public nftBids; // tokenId => highest bid
+    mapping(uint256 => address) public nftHighestBidder; // tokenId => highest bidder
+
+    uint256 public auctionDuration = 14 days; // Bi-monthly auction duration
 
     constructor(IERC721 _nftContract) {
         nftContract = _nftContract;
