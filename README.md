@@ -1,6 +1,8 @@
 # NFT Proof of Stake Validator System
 
-A decentralized, blockchain-based proof-of-stake (PoS) system where validator extensions—services or agents that build on top of the underlying blockchain—stake NFTs, earn network fees, pay Harberger taxes, and face slashing for misconduct. Unlike base-layer consensus validators, these validator extensions provide verifiable compute for tasks requiring Sybil resistance—such as validating AI model outputs, evaluating clients, or curating data. By requiring stake and subjecting validators to Harberger taxes and slashing, the system discourages token speculation and aligns incentives toward honest, ongoing participation. Drawing from **RadicalXChange** principles and the concept of **partial common ownership**, this model fosters a sustainable and economically cooperative blockchain ecosystem.
+A decentralized, blockchain-based proof-of-stake (PoS) system where validator extensions—services or agents that build on top of the underlying blockchain—stake NFTs, earn network fees, pay Harberger taxes, and face slashing for misconduct. Unlike base-layer consensus validators, these validator extensions provide verifiable compute for tasks requiring Sybil resistance—such as validating AI model outputs, evaluating clients, or curating data. 
+
+By requiring stake and subjecting validators to Harberger taxes and slashing, the system discourages token speculation and aligns incentives toward honest, ongoing participation. Drawing from **RadicalXChange** principles and the concept of **partial common ownership**, this model fosters a sustainable and economically cooperative blockchain ecosystem.
 
 ## Components
 - **NFTMinting.sol**: ERC-721 contract for minting validator NFTs.
