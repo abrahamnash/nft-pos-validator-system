@@ -14,6 +14,19 @@ Additionally, the DAO **leases validator NFTs as property for sale**, collecting
 - **Slashing.sol**: Slashing logic for penalizing malicious validators.
 - **DAO.sol**: Governance, leasing, and supply control, including guaranteed buy-backs.
 
+# Key Open Questions & Assumptions for Economic Modeling of NFT PoS Validators
+
+## Economic & Incentive Questions
+- What is the optimal Harberger tax rate to maximize DAO revenue while maintaining validator participation?  
+- How should NFTs be valued based on projected lease lifetime earnings?  
+- How do dynamic changes in network activity (e.g., reduced transaction volume) affect NFT value and Harberger taxes?  
+- How much stake should be required to effectively deter misconduct without discouraging participation?  
+- How should network fees be fairly distributed among validators based on stake, performance, and contribution?  
+- How much tax revenue is required to reliably fund buy-backs at the end of NFT lease periods?  
+- How will self-assessed NFT values interact with market demand and auction dynamics under Harberger rules?  
+- What auction mechanism best balances fairness, liquidity, and price discovery for validator NFTs?  
+- Can a steady-state economic model predict long-term solvency of the DAO under variable participation and tax collection?  
+
 ## Usage
 1. Clone the repo
 2. Install dependencies: `npm install`
