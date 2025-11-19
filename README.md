@@ -25,7 +25,9 @@ Additionally, the DAO **leases validator NFTs as property for sale**, collecting
 - How much tax revenue is required to reliably fund buy-backs at the end of NFT lease periods?  
 - How will self-assessed NFT values interact with market demand and auction dynamics under Harberger rules?  
 - What auction mechanism best balances fairness, liquidity, and price discovery for validator NFTs?  
-- Can a steady-state economic model predict long-term solvency of the DAO under variable participation and tax collection?  
+- Can a steady-state economic model predict long-term solvency of the DAO under variable participation and tax collection?
+
+The NFT PoS validator system raises several interrelated economic and incentive questions that should be mapped and simulated to ensure protocol sustainability. Key considerations include: determining the optimal Harberger tax rate `T(f, s, v)` to maximize DAO revenue while maintaining validator participation; valuing NFTs based on projected lease lifetime earnings, e.g., `V_nft = Σ (expected fees_i − taxes_i) / (1 + r)^i`; modeling dynamic changes in network activity and their effect on NFT value and taxes, `dV_nft/dt = f(v_tx(t), T(t))`; calculating the minimum stake `s*` needed to deter misconduct given a slashing probability function `P_slash(s, m)`; designing fair fee distribution `F_i = F_total × g(s_i, p_i, c_i)`; ensuring sufficient tax revenue `R_tax ≥ Σ V_buyback_i` to fund end-of-lease buy-backs; understanding how self-assessed NFT values interact with market demand and auction clearing prices, `P_clear = f(V_self, competitor bids)`; selecting auction mechanisms `A(V_self, V_market, N_participants)` that balance fairness, liquidity, and price discovery; and modeling DAO solvency as a dynamic system with state `S(t) = {total NFT value, collected taxes, network fees, obligations}` and evolution `dS/dt = f(S, participation, network activity)` to find a steady-state `S*` where inflows equal outflows. Mapping these functions and running simulations (live or offline) is essential to test incentives, economic sustainability, and long-term stability of the protocol.
 
 ## Usage
 1. Clone the repo
