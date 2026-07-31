@@ -105,7 +105,7 @@ Mapping and simulating these functions is the core research goal.
 
 ### Why It Matters
 
-**Web3 today:** NFTs = speculation. Staking = yield farming. Incentives = extractive.
+**Web3 today:** Tokens = speculation. Staking = yield farming. Incentives = extractive.
 **This system:** NFTs = productive leases. Staking = active work. Incentives = aligned with network health.
 
 Validators don't flip NFTs — they lease them to **work**.
