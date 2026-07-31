@@ -1,4 +1,8 @@
-# Use It or Lose It: An NFT Validator Leasing System
+# Use It or Lose It
+
+*Why the people who build a place shouldn't be the ones priced out of it*
+
+![A coffee shop in a shipping container on a broken road](assets/coffee-shop.svg)
 
 ### The Coffee Shop Problem
 
@@ -44,7 +48,7 @@ We're testing this idea in code first, before trying to apply it anywhere real.
 
 ### The Digital Lab
 
-Validator NFTs work like leased market stalls. Validators — services or agents providing Sybil-resistant compute (validating AI output, evaluating clients, curating data) — stake NFTs, self-assess their value, pay tax on that value, earn fees, and risk slashing for misconduct.
+We're testing this with an NFT-based validator staking system — validator NFTs work like leased market stalls. Validators — services or agents providing Sybil-resistant compute (validating AI output, evaluating clients, curating data) — stake NFTs, self-assess their value, pay tax on that value, earn fees, and risk slashing for misconduct.
 
 | Market Stall | Digital System |
 |---|---|
@@ -62,6 +66,8 @@ Validator NFTs work like leased market stalls. Validators — services or agents
 3. DAO collects that tax over the lease.
 4. Validator earns network fees for honest work.
 5. At lease end, DAO guarantees a buy-back from the tax it collected.
+
+![The lease, stake, tax, fee, buy-back cycle](assets/lease-cycle.svg)
 
 Result: speculation is penalized, participation is rewarded, hoarding is prevented.
 
