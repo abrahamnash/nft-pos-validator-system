@@ -1,0 +1,29 @@
+<svg viewBox="0 0 800 540" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#5a6b73"/>
+    </marker>
+  </defs>
+  <rect width="800" height="540" fill="#f7f5f0"/>
+  <circle cx="400" cy="90" r="72" fill="#2f5d62"/>
+  <text x="400" y="85" font-family="Arial" font-size="16" fill="white" text-anchor="middle">1. DAO Leases</text>
+  <text x="400" y="105" font-family="Arial" font-size="16" fill="white" text-anchor="middle">Validator NFT</text>
+  <circle cx="680" cy="245" r="72" fill="#3c7a73"/>
+  <text x="680" y="235" font-family="Arial" font-size="15" fill="white" text-anchor="middle">2. Validator Stakes</text>
+  <text x="680" y="255" font-family="Arial" font-size="15" fill="white" text-anchor="middle">&amp; Self-Assesses</text>
+  <circle cx="580" cy="450" r="72" fill="#4f8f7e"/>
+  <text x="580" y="445" font-family="Arial" font-size="16" fill="white" text-anchor="middle">3. Tax</text>
+  <text x="580" y="465" font-family="Arial" font-size="16" fill="white" text-anchor="middle">Collected</text>
+  <circle cx="220" cy="450" r="72" fill="#6ba690"/>
+  <text x="220" y="445" font-family="Arial" font-size="16" fill="white" text-anchor="middle">4. Fees</text>
+  <text x="220" y="465" font-family="Arial" font-size="16" fill="white" text-anchor="middle">Earned</text>
+  <circle cx="120" cy="245" r="72" fill="#8cbfa8"/>
+  <text x="120" y="235" font-family="Arial" font-size="15" fill="#1f3a34" text-anchor="middle">5. Buy-Back</text>
+  <text x="120" y="255" font-family="Arial" font-size="15" fill="#1f3a34" text-anchor="middle">Guaranteed</text>
+  <path d="M463 115 L618 210" stroke="#5a6b73" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+  <path d="M652 312 L608 383" stroke="#5a6b73" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+  <path d="M508 450 L292 450" stroke="#5a6b73" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+  <path d="M192 383 L148 312" stroke="#5a6b73" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+  <path d="M155 182 L340 118" stroke="#5a6b73" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+  <text x="400" y="525" font-family="Arial" font-size="15" fill="#666" text-anchor="middle">The cycle repeats — speculation stays out, participation stays in</text>
+</svg>
