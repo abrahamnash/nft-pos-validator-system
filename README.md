@@ -1,44 +1,126 @@
-# NFT Proof of Stake Validator System
+# Use It or Lose It: An NFT Validator Leasing System
 
-A decentralized, blockchain-based proof-of-stake (PoS) system where validator extensions—services or agents that build on top of the underlying blockchain—stake NFTs, earn network fees, pay Harberger taxes, and face slashing for misconduct. Unlike base-layer consensus validators, these validator extensions provide verifiable compute for tasks requiring Sybil resistance—such as validating AI model outputs, evaluating clients, or curating data.  
+### The Coffee Shop Problem
 
-By requiring stake and subjecting validators to Harberger taxes and slashing, the system discourages token speculation and aligns incentives toward honest, ongoing participation. Drawing from **RadicalXChange** principles and the concept of **partial common ownership**, this model fosters a sustainable and economically cooperative blockchain ecosystem.  
+Your friend runs a 5-star coffee shop. Spotless. Everyone's favorite.
+They pay $6,000/month for a rusted shipping container on a broken road.
+The landlord does nothing but collect checks.
 
-Additionally, the DAO **leases validator NFTs as property for sale**, collecting Harberger taxes during the lease period. At the end of the lease, the DAO **guarantees buy-backs** using the taxes it has collected, mirroring real-world models used for public goods and housing in Singapore, Taiwan, Norway (oil drilling), and other contexts. This mechanism ensures long-term stability, prevents speculative hoarding, and maintains economic sustainability.  
+> "Don't like it? Someone else will pay more."
 
-## Components
-- **NFTMinting.sol**: ERC-721 contract for minting validator NFTs.
-- **StakingAndTax.sol**: Logic for staking NFTs, self-assessment, and Harberger tax.
-- **Auction.sol**: Auction contract for validators to acquire NFTs.
-- **ProofOfStake.sol**: Manages transaction validation and fee distribution.
-- **Slashing.sol**: Slashing logic for penalizing malicious validators.
-- **DAO.sol**: Governance, leasing, and supply control, including guaranteed buy-backs.
+Their labor feeds speculation, not growth. The building sits there gaining value while the person actually using it goes broke.
 
-# Key Open Questions & Assumptions for Economic Modeling of NFT PoS Validators
+**We can design around this.**
 
-## Economic & Incentive Questions
-- What is the optimal Harberger tax rate to maximize DAO revenue while maintaining validator participation?  
-- How should NFTs be valued based on projected lease lifetime earnings?  
-- How do dynamic changes in network activity (e.g., reduced transaction volume) affect NFT value and Harberger taxes?  
-- How much stake should be required to effectively deter misconduct without discouraging participation?  
-- How should network fees be fairly distributed among validators based on stake, performance, and contribution?  
-- How much tax revenue is required to reliably fund buy-backs at the end of NFT lease periods?  
-- How will self-assessed NFT values interact with market demand and auction dynamics under Harberger rules?  
-- What auction mechanism best balances fairness, liquidity, and price discovery for validator NFTs?  
-- Can a steady-state economic model predict long-term solvency of the DAO under variable participation and tax collection?
+---
 
-The NFT PoS validator system raises several interrelated economic and incentive questions that should be mapped and simulated to ensure protocol sustainability. Key considerations include: determining the optimal Harberger tax rate `T(f, s, v)` to maximize DAO revenue while maintaining validator participation; valuing NFTs based on projected lease lifetime earnings, e.g., `V_nft = Σ (expected fees_i − taxes_i) / (1 + r)^i`; modeling dynamic changes in network activity and their effect on NFT value and taxes, `dV_nft/dt = f(v_tx(t), T(t))`; calculating the minimum stake `s*` needed to deter misconduct given a slashing probability function `P_slash(s, m)`; designing fair fee distribution `F_i = F_total × g(s_i, p_i, c_i)`; ensuring sufficient tax revenue `R_tax ≥ Σ V_buyback_i` to fund end-of-lease buy-backs; understanding how self-assessed NFT values interact with market demand and auction clearing prices, `P_clear = f(V_self, competitor bids)`; selecting auction mechanisms `A(V_self, V_market, N_participants)` that balance fairness, liquidity, and price discovery; and modeling DAO solvency as a dynamic system with state `S(t) = {total NFT value, collected taxes, network fees, obligations}` and evolution `dS/dt = f(S, participation, network activity)` to find a steady-state `S*` where inflows equal outflows. Mapping these functions and running simulations (live or offline) is essential to test incentives, economic sustainability, and long-term stability of the protocol.
+### It's Not Just Coffee Shops
 
-## Usage
-1. Clone the repo
-2. Install dependencies: `npm install`
-3. Compile contracts: `npx hardhat compile`
-4. Deploy contracts to testnet: `npx hardhat run scripts/deploy.js --network goerli`
+A new town gets built. Teachers, nurses, tradespeople, baristas — the people who actually make the place run — move in and do the work that turns it into somewhere people want to be.
 
-## Technologies
-- Solidity ^0.8.0
-- OpenZeppelin ERC721, Ownable, AccessControl
-- Hardhat/Truffle for testing & deployment
+That's the exact moment they start getting priced out.
 
-## License
-This project is licensed under the MIT License.
+Meanwhile, investors buy up the lots in the center of town — the best spots, the ones with the most foot traffic. They don't live there. They don't open a shop, hire anyone, or add a single thing to the local economy. They just wait. Every new resident who moves in, every teacher and nurse and barista who makes the town worth living in, makes that empty lot more valuable — value the investor did nothing to create. Eventually they sell it, or lease it back, to the very people who made it worth something in the first place.
+
+The people who contribute — labor, service, care, craft — get squeezed out. The people who contribute nothing get paid for showing up early and waiting.
+
+First they move to the edge of town. Then the next town over. The commute grows — 45 minutes, then 90, then 2.5 hours each way — just to do the job that keeps the place running. Six or seven days a week, because one job isn't enough anymore. No time left for family, rest, or anything that looks like a life.
+
+This is modern day slavery. Not as a figure of speech — labor with no exit, no leverage, and none of the value it created.
+
+It doesn't have to be this way. Capital can still flow. Markets can still be free. Land can still be priced, bought, and sold. But the people who make a place valuable shouldn't be the ones systematically pushed out of it. Mechanisms to prevent this already exist — [RadicalXChange (RxC)](https://www.radicalxchange.org/) has done serious work on self-assessed taxation and shared ownership that this project draws on directly.
+
+---
+
+### A Better Way to Own Things
+
+Think about how you'd price your own car for a fast sale: you name a number. If you price it too low, someone can buy it from you on the spot at that price — so you're forced to be honest. Price it too high, and you're the one paying more (in this case, in tax) to hold onto it.
+
+Now apply that to a market stall instead of a storefront. You lease the spot, you pay based on what you say it's worth, and when your lease is up, the market itself buys back your spot — not some landlord who never shows up. Cities already run versions of this for parking permits and public land leases.
+
+We're testing this idea in code first, before trying to apply it anywhere real.
+
+---
+
+### The Digital Lab
+
+Validator NFTs work like leased market stalls. Validators — services or agents providing Sybil-resistant compute (validating AI output, evaluating clients, curating data) — stake NFTs, self-assess their value, pay tax on that value, earn fees, and risk slashing for misconduct.
+
+| Market Stall | Digital System |
+|---|---|
+| A leased stall | A validator NFT |
+| Vendor renting the stall | Validator leasing the NFT |
+| Landlord speculation | NFT speculation |
+| Rent based on self-priced value | Harberger tax |
+| Market fees fund upkeep | DAO revenue |
+| Market buys back the spot | Guaranteed NFT buy-back |
+| Foot traffic & reputation | Validator performance |
+
+**The cycle:**
+1. DAO leases out validator NFTs.
+2. Validator stakes, self-assesses value, pays tax on it.
+3. DAO collects that tax over the lease.
+4. Validator earns network fees for honest work.
+5. At lease end, DAO guarantees a buy-back from the tax it collected.
+
+Result: speculation is penalized, participation is rewarded, hoarding is prevented.
+
+---
+
+### Components
+
+| Contract | Purpose |
+|---|---|
+| `NFTMinting.sol` | ERC-721 minting of validator NFTs |
+| `StakingAndTax.sol` | Staking, self-assessment, tax logic |
+| `Auction.sol` | Auctions for acquiring NFTs |
+| `ProofOfStake.sol` | Transaction validation & fee distribution |
+| `Slashing.sol` | Penalties for malicious validators |
+| `DAO.sol` | Governance, leasing, supply control, buy-backs |
+
+---
+
+### Key Open Questions
+
+- Optimal tax rate `T(f, s, v)` — maximize DAO revenue without losing validators?
+- NFT valuation: `V_nft = Σ (fees_i − taxes_i) / (1 + r)^i`
+- Value dynamics under changing network activity: `dV_nft/dt = f(v_tx(t), T(t))`
+- Minimum stake `s*` to deter misconduct: `P_slash(s, m)`
+- Fair fee split: `F_i = F_total × g(s_i, p_i, c_i)`
+- Tax revenue must cover buy-backs: `R_tax ≥ Σ V_buyback_i`
+- Auction clearing price: `P_clear = f(V_self, competitor bids)`
+- DAO solvency steady-state `S*`, where `dS/dt = f(S, participation, activity)` and inflows = outflows
+
+Mapping and simulating these functions is the core research goal.
+
+---
+
+### Why It Matters
+
+**Web3 today:** NFTs = speculation. Staking = yield farming. Incentives = extractive.
+**This system:** NFTs = productive leases. Staking = active work. Incentives = aligned with network health.
+
+Validators don't flip NFTs — they lease them to **work**.
+
+If it works here, it's a testbed for anything people currently rent from someone who adds no value — land, stalls, storefronts, and yes, the coffee shop on the broken road.
+
+---
+
+### Usage
+
+```bash
+git clone [repo-url]
+npm install
+npx hardhat compile
+npx hardhat run scripts/deploy.js --network goerli
+```
+
+### Tech Stack
+Solidity ^0.8.0 · OpenZeppelin (ERC721, Ownable, AccessControl) · Hardhat
+
+### License
+MIT
+
+---
+
+*The technical details are in the contracts. The heart is in this vision.*
