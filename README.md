@@ -1,6 +1,8 @@
 # Use It or Lose It
 
-*Why the people who build a place shouldn't be the ones priced out of it*
+*A fairer way to own what we build — modeled, tested, and open-sourced in code.*
+
+![Solidity](https://img.shields.io/badge/Solidity-%5E0.8.0-363636) ![Hardhat](https://img.shields.io/badge/Built%20with-Hardhat-yellow) ![License](https://img.shields.io/badge/License-MIT-blue)
 
 ![A coffee shop in a shipping container on a broken road](assets/coffee-shop.svg)
 
