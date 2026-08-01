@@ -40,11 +40,21 @@ It doesn't have to be this way. Capital can still flow. Markets can still be fre
 
 ### A Better Way to Own Things
 
-Think about how you'd price your own car for a fast sale: you name a number. If you price it too low, someone can buy it from you on the spot at that price — so you're forced to be honest. Price it too high, and you're the one paying more (in this case, in tax) to hold onto it.
+Think about pricing your own car for a quick sale. You name a number. Price it too low, and someone can buy it from you on the spot — forcing you to be honest. Price it too high, and you're the one paying more, in this case in tax, to hold onto it.
 
-Now apply that to a market stall instead of a storefront. You lease the spot, you pay based on what you say it's worth, and when your lease is up, the market itself buys back your spot — not some landlord who never shows up. Cities already run versions of this for parking permits and public land leases.
+Governments already lease out rights this way — mineral rights, drilling licenses, spectrum, fishing quotas. A limited-term right to use something, priced and paid for, not owned outright. Cities do the same with market stalls and parking permits: lease the spot, pay based on what you say it's worth, and when the lease is up, the community buys back the spot — not some landlord who never shows up.
 
-We're testing this idea in code first, before trying to apply it anywhere real.
+This isn't a new idea. What's new is applying it somewhere it hasn't gone yet: decentralized AI training and blockchain networks.
+
+That world has mostly secured itself through staking tokens. But tokens can be bought up, cornered, and leveraged by whoever has enough capital — a wealth contest dressed up as security, with nothing to do with who's actually doing the work. It's not ownership based on labor and effort; it's ownership based on who can accumulate the most token.
+
+So the real question wasn't just "how do we stop speculation." It became: what replaces the token? A DAO can lease out the right to help secure a network the same way a government leases mineral rights. The validator prices that right themselves, does the work, and earns network fees for it — like rent, paid for keeping the network running.
+
+**Lease the right → Price it honestly → Do the work → Earn network fees**
+
+When the lease ends, the DAO guarantees a buyback, funded by the fees it's collected along the way. That's what makes staying and doing the work pay off — not sitting on it and hoping the price climbs, but showing up for the length of the lease and earning a fair return at the end.
+
+Keeping this stable is the hard part: pricing has to track real network activity, and the DAO has to hold enough in reserve to honor every buyback. That's as much a math problem as an economic one — and it's exactly what this project tests in code and simulation.
 
 ---
 
@@ -105,7 +115,7 @@ Mapping and simulating these functions is the core research goal.
 
 ### Why It Matters
 
-**Web3 today:** Tokens = speculation. Staking = yield farming. Incentives = extractive.
+**Web3 today:** NFTs = speculation. Staking = yield farming. Incentives = extractive.
 **This system:** NFTs = productive leases. Staking = active work. Incentives = aligned with network health.
 
 Validators don't flip NFTs — they lease them to **work**.
